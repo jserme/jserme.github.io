@@ -15,7 +15,7 @@ tags : javascript
 * http://q.sohu.com/forum/5/topic/3464168
 那么到底能不能用js实现put和delete呢？
 
-大家都知道XMLHttpRequest对象的open方法第一个参数就是method,有多少人用过除了"GET"和"POST"之外的参数呢？试验了一个，发现了好玩的，哈哈，例子猛击[这里](http://s.jser.me/demos/1343967804284_httpmethod_test.html "点开看看呗")，请在不同的浏览器中测试，服务器返回的是请求的method。
+大家都知道XMLHttpRequest对象的open方法第一个参数就是method,有多少人用过除了"GET"和"POST"之外的参数呢？试验了一个，发现了好玩的，哈哈，例子猛击[这里](/demos/1343967804284_httpmethod_test.html "点开看看呗")，请在不同的浏览器中测试，服务器返回的是请求的method。
 
 
 在IE6，7，8下，自己乱定义的method jser.me光荣牺牲，报错了，但是put,delete都很正常，并且请求过一次的post，居然也成get了，

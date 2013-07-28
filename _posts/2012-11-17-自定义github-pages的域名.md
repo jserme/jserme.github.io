@@ -24,13 +24,13 @@ git push origin gh-pages
 
 ##二、得到你在github上的二级域名的ip
 这里我们使用一个简单的命令得到我们的二级域名对应的ip，例如我的二级域名是jserme.github.com
-![20121117180447.png](http://s.jser.me/images/1353148911110_20121117180447.png)
+![20121117180447.png](/images/1353148911110_20121117180447.png)
 
 这里可以看到ip是204.232.175.78
 
 ##三、设置你的域名dns指向刚才得到的ip
 然后我们在域名控制的地方添加一个A纪录，我的域名基本上都是在godaddy上买的，godaddy上默认的dns经常被墙，所以我把dns换成了国内靠谱的[dnspod.cn](http://dnspod.cn)。如下设置
-![20121117181954.png](http://s.jser.me/images/1353149138934_20121117181954.png)
+![20121117181954.png](/images/1353149138934_20121117181954.png)
 
 正常情况下，几分钟就可以访问了，例如你现在可以访问[expressjs的中文站点](http://expressjs.jser.us)。
 

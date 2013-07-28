@@ -23,7 +23,7 @@ layout : nil
          <guid>{{ site.url }}{{ post.id }}</guid>
          <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
          <author><![CDATA[草依山]]></author>
-         <description><![CDATA[{{ post.content | expand_urls: site.url }}]]></description>
+         <description><![CDATA[{{ post.content }}]]></description>
      </item>
 {% endfor %}
 </channel>

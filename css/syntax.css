@@ -15,10 +15,11 @@
     -webkit-border-radius:7px;
     border-radius:7px;
 }
-code, pre {
+.highlight code, .highlight pre {
     font-family:"Consolas", "Courier New", "Courier", "FreeMono", monospace;
     font-size:0.95em;
-    margin: 1em 0 1.5em 0;
+    margin: 1em 0 1em 0;
+    padding:0;
 }
 .highlight span {
     font-family:"Consolas", "Courier New", "Courier", "FreeMono", monospace;

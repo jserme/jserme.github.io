@@ -10,8 +10,8 @@
 }
 body {
     margin: 0;
-    font: 12px Microsoft YaHei, arial, tahoma, sans-serif, verdana;
-    color: #555;
+    font: 14px/1.5 Tahoma, "Microsoft Yahei", Helvetica, Arial, sans-serif;
+    color: #000;
     background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAUdEVYdENyZWF0aW9uIFRpbWUAMy82LzEygrTcTAAAAFRJREFUSIljfPDggZRf5RIGGNjUHsNATz6jXmSL1Kb2GLiAX+USBnrymRgGGDCORgFmoNAXjEbBaBSMRsFoFIxGwWgUjEbBaBSMRsFoFIxGwWgUAABYNujumib3wAAAAABJRU5ErkJggg==') fixed;
 }
 .container {
@@ -84,10 +84,6 @@ h1.title {
     font-size:16px;
     line-height:19px;
 }
-.post h2 {
-    font-size:14px;
-    line-height:17px;
-}
 .post p {
     font-size:12px;
     line-height:15px;
@@ -109,6 +105,9 @@ section {
     min-height:400px;
     z-index:3;
 }
+p {
+    margin:1em;
+}
 h1, h2, h3, h4, h5, h6 {
     color: #222;
     padding: 0;
@@ -123,7 +122,7 @@ h1 {
     margin:12px 0 6px 0;
 }
 h2 {
-    color: #393939;
+    margin:15px 0 10px 0 ; 
 }
 h3, h4, h5, h6 {
     color: #494949;
@@ -231,10 +230,9 @@ table {
 .tags-con a {
     float:left;
 }
-.content li{
+.content li {
     margin:5px 0;
 }
-
 .links-con {
     float:right;
     width:20%;
@@ -267,6 +265,16 @@ table {
 .site-info {
     text-align:center;
     padding:10px 0;
+}
+code {
+    background:#222;
+    color:#FFF;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    padding:3px 5px;
 }
 /** 480px __________________________________________________________________________________________________________ */
  @media only screen and (min-width: 480px) {
@@ -309,10 +317,6 @@ table {
     h1.title {
         font-size:20px;
         line-height:26px;
-    }
-    .content h2 {
-        font-size:18px;
-        line-height:24px;
     }
     .content p {
         font-size:14px;

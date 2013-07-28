@@ -9,11 +9,13 @@ tags : firefox  javaplugin  juniper
 找了一会，找到解决方法，小纪录一下：
 
 安装了jre之后，插件会在下面的路径里
-```javascript
+
+```bash
 /usr/lib/jvm/java-6-sun-1.6.0.20/jre/lib/i386/libnpjp2.so
 ```
 在火狐的插件目录里搞一个软链接就好啦
-```javascript
+
+```bash
 cd ~/.mozllia
 ln -s  /usr/lib/jvm/java-6-sun-1.6.0.20/jre/lib/i386/libnpjp2.so .
 ```

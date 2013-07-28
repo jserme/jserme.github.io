@@ -8,15 +8,15 @@ tags : javascript vim
 
 首先语法高亮，这个必须的。vim自带的那个javascript的文件太弱了，到[这里](http://www.vim.org/scripts/script.php?script_id=1491 "vim js syntax")下载，完了直接扔到vim的syntax目录下，然后，在vimrc文件里写上
 
-```javascript  
-   let b:javascript_fold=1  "开启折叠
-   let javascript_enable_domhtmlcss=1　"启用对dom html css高亮支持
+```vim
+let b:javascript_fold=1  "开启折叠
+let javascript_enable_domhtmlcss=1　"启用对dom html css高亮支持
 ```
 然后呢是语法检查，少写分号，会导致压缩脚本时出问题的，object的属性多写逗号会在IE下报错的，这些可能是手误导致的问题，需要有一个工具提醒我们，[下载它](http://www.javascriptlint.com/download.htm),接下来分别说一下windows下和linux下的配置。
 linux:
 下载源码包,解压
 
-```javascript
+```bash
 $ cd jsl
 $ make -f Makefile.ref all
 $ cd Linux_All_DBG.OBJ/
@@ -29,13 +29,16 @@ window:
 上面的步骤只是搞jsl的环境，下面才是VIM的配置，[下载它](http://www.vim.org/scripts/script.php?script_id=2578#0.1),然后扔到vim目录下的plugin中去。
 
 linux下修改 vimrc文件（有同学反应不好使，已经改了）
-```javascript
+
+```vim
 let g:jslint_command = 'jsl'
 let g:jslint_command_options = '-nofilelisting -nocontext -conf "/home/username/.jsl.conf" -nosummary -nologo -process'
 map <F8> :call JsonLint()<cr>
 ```
+
 window下修改 vimrc文件
-```javascript
+
+```vim
 map <F10> :call JavascriptLint()<cr>
 ```
 这样你会发现保存js文件时会自动调用jslint，修改.jsl.conf文件中的一些选项让它更适应你的编程风格

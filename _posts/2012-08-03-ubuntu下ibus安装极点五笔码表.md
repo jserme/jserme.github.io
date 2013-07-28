@@ -12,11 +12,11 @@ http://forum.ubuntu.org.cn/viewtopic.php?t=262266
 
 具体看上面的帖子
 
-```javascript
+```bash
 tar xvzf vissible-ibus.tar.gz
 
 sudo cp vissible.db /usr/share/ibus-table/tables
-sudo cp vissible.gif /usr/share/ibus-table/icons</pre>
+sudo cp vissible.gif /usr/share/ibus-table/icons
 ```
 
 运行之后，在系统--首选项--IBUS设置--输入法 里添加极点五笔

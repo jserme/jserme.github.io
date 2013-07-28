@@ -1,0 +1,4 @@
+name: 草依山的Javascript世界 
+markdown: redcarpet
+pygments: true
+paginate: 10 

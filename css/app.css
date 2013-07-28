@@ -140,20 +140,6 @@ img {
     max-width: 100%;
     border:none;
 }
-code, pre {
-    font-family: Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
-    color: #333;
-    font-size: 12px;
-    overflow-x: auto;
-}
-pre {
-    background: #3A3C42;
-    color: #f8f8f2;
-    margin: 0 -5px 10px;
-}
-pre code {
-    color: #f8f8f2;
-}
 table {
     width: 100%;
     border-collapse: collapse;
@@ -178,72 +164,6 @@ footer {
     overflow: hidden;
     background:#FFF;
     border-top:5px #C6EAFA solid;
-}
-/*** import from mou's markdown css ***/
- .markdown a img {
-    border: none;
-}
-.markdown hr {
-    margin: 0 0 19px;
-    border: 0;
-    border-bottom: 1px solid #ccc;
-}
-.markdown blockquote {
-    padding: 13px 13px 21px 15px;
-    margin-bottom: 18px;
-    font-family:georgia, serif;
-    font-style: italic;
-}
-.markdown blockquote:before {
-    content:"\201C";
-    font-size:40px;
-    margin-left:-10px;
-    font-family:georgia, serif;
-    color:#eee;
-}
-.markdown blockquote p {
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 18px;
-    margin-bottom: 0;
-    font-style: italic;
-}
-.markdown code, .markdown pre {
-    font-family: Monaco, Andale Mono, Courier New, monospace;
-}
-.markdown code {
-    color: #ff4a14;
-    padding: 1px 3px;
-    font-size: 12px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-}
-.markdown pre {
-    display: block;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-}
-.markdown pre code {
-    color: #F8F8F2;
-    font-size: 11px;
-    padding:0px;
-}
-.markdown ol {
-    list-style-type: decimal;
-    margin-bottom: 13px;
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-top: 13px;
-    padding-left:30px;
-}
-.markdown ul {
-    list-style-type: disc;
-    margin-bottom: 13px;
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-top: 13px;
-    padding-left:20px;
 }
 table {
     max-width: 100%;
@@ -401,12 +321,6 @@ table {
         -ms-border-radius: 0 0 8px 8px;
         -o-border-radius: 0 0 8px 8px;
         border-radius: 0 0 8px 8px;
-    }
-    code, pre {
-        font-size: 14px;
-    }
-    pre {
-        margin: 0 -20px 20px;
     }
     .pagination {
         height: 40px;

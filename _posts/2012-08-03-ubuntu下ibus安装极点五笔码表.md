@@ -1,5 +1,5 @@
 ---
-layout : default 
+layout : post 
 title : ubuntu下ibus安装极点五笔码表
 tags : ibus  linux  极点五笔
 ---

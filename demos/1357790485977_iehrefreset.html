@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title> reset href  test </title>
+    <script type="text/javascript">
+    function changeHref( el ){
+        el.setAttribute('href', 'http://jser.me');
+    }
+
+    function changeHrefAndResetText( el ){
+        var oldText;
+        if( el.innerText ) {
+            oldText = el.innerText;
+
+        }
+        el.setAttribute('href', 'http://jser.me');
+
+        if( oldText ) {
+            el.innerText = oldText;
+        }
+    }
+
+    function onloadHanlder(){
+        var test1 = document.getElementById('test1');
+        var test2 = document.getElementById('test2');
+
+        changeHref(test1);
+        changeHrefAndResetText(test2);
+        
+    }
+    </script>
+</head>
+<body onload="">
+<h4>
+<a href="http://jser.me/p/26d61">查看博文</a>
+</h4>
+以下的所有链接onload的时候href都会变成http://jser.me
+<p>
+下面的链接和它内的文本不一样
+<a id="test1" href="http://expressjs.jser.us" onmousedown="changeHref(this)" target="_blank">链接和文本不一样</a><p>
+
+<p>
+下面的链接和它内的文本一样
+<a id="test2" href="http://expressjs.jser.us" onmousedown="changeHref(this)"  target="_blank">http://expressjs.jser.us</a><p>
+
+
+
+以下的所有链接mousedown的时候href都会变成http://jser.me
+<p>
+下面的链接和它内的文本不一样
+<a href="http://expressjs.jser.us" onmousedown="changeHref(this)" target="_blank">链接和文本不一样</a><p>
+
+<p>
+下面的链接和它内的文本一样
+<a href="http://expressjs.jser.us" onmousedown="changeHref(this)"  target="_blank">http://expressjs.jser.us</a><p>
+
+<p>
+换个链接的协议链接和文本一样
+<a href="mailto://xxx@xx.com" onmousedown="changeHref(this)"  target="_blank">mailto://xxx@xxx.com</a><p>
+
+<p>
+换个链接的协议链接和文本不一样
+<a href="mailto://xxx@xx.com" onmousedown="changeHref(this)"  target="_blank">发邮件给xxx</a><p>
+
+<br/>
+<br/>
+<br/>
+<br/>
+以下的所有链接mousedown的时候href都会变成http://jser.me, 但是点击后延时修正它内部的文本
+<p>
+下面的链接和它内的文本不一样
+<a href="http://expressjs.jser.us" onmousedown="changeHrefAndResetText(this)" target="_blank">链接和文本不一样</a><p>
+
+<p>
+下面的链接和它内的文本一样
+<a href="http://expressjs.jser.us" onmousedown="changeHrefAndResetText(this)"  target="_blank">http://expressjs.jser.us</a><p>
+
+<p>
+换个链接的协议链接和文本一样
+<a href="mailto://xxx@xx.com" onmousedown="changeHrefAndResetText(this)"  target="_blank">mailto://xxx@xxx.com</a><p>
+
+<p>
+换个链接的协议链接和文本不一样
+<a href="mailto://xxx@xx.com" onmousedown="changeHrefAndResetText(this)"  target="_blank">发邮件给xxx</a><p>
+</body>
+</html>

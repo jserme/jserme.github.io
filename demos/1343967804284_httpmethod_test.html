@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>ajax put delete test page</title>
+<body>
+<script type="text/javascript">
+
+if( !Function.prototype.bind ){
+     Function.prototype.bind = function( obj ){
+        var method = this;
+        return  function(){
+            method.apply( obj, arguments );
+        }
+     }
+}
+ 
+ function asyncRequest( p ){
+
+     function createXMLHttpRequest() {
+       try { return new XMLHttpRequest(); } catch(e) {}
+       try { return new ActiveXObject("Msxml2.XMLHTTP"); } catch (e) {}
+       return null;
+     }
+
+     this.xhr = createXMLHttpRequest();
+
+     try{
+         this.xhr.open( p.method, p.url, true);
+
+         this.xhr.onreadystatechange = function() {
+            if( this.xhr.readyState != 4 ) { return; }
+            alert( 'current method is ' +  p.method + ' , server consider is ' +  this.xhr.responseText );
+         }.bind( this );
+
+         this.xhr.send( null );
+     }catch(e){
+         alert( ' method is ' + p.method + ' : ' + e );
+     }
+ }
+
+/*** GET ****/
+new asyncRequest({
+    url : 'httpmethod_test.php' ,
+    method  : 'GET'
+});
+
+/*** POST ****/
+new asyncRequest({
+    url : 'httpmethod_test.php' ,
+    method  : 'POST' 
+});
+
+/*** PUT ****/
+new asyncRequest({
+    url : 'httpmethod_test.php' ,
+    method  : 'PUT'
+});
+
+/*** DELETE ****/
+new asyncRequest({
+    url : 'httpmethod_test.php' ,
+    method  : 'DELETE'
+});
+
+
+/**** custom a new mehtod :) ****/
+new asyncRequest({
+    url : 'httpmethod_test.php' ,
+    method  : 'jser.me' 
+});
+</script>
+</body>
+</html>
+
+

@@ -1,0 +1,323 @@
+<!doctype html>
+<!--
+          做着玩的，其实就是纯js代码，用了开源的flash复制组件(ZeroClipboard)
+          把其中的一些http://jser.me/的东西替换成你网站上的东西就行了
+          本地调试的时候因为flash的策略复制会不好使，搭个测试服务器就行了
+          
+          有喜欢做前端的朋友，可以关注一下我的博客(http://jser.me),我喜欢交朋友
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="keywords" content="咆哮体生成器,咆哮体,咆哮体自动生成软件">
+        <meta name="descpriction" content="咆哮体生成器" />
+        <title>咆哮体生成器</title>
+        <style type="text/css">
+            body {font-size:14px; text-align:center}
+            .readme{ position:absolute; width:212px; top:70px;left:600px;}
+
+            /*.control label{ display:block; padding:10px;} */
+            .control{ background:#F3F5FF;border:1px solid #DEEAF0}
+            .control span{ width:75px;display:inline-block; *display:inline; *zoom:1; text-align:right;}
+            .text-input{ background-color: #005EAC; border-color: #B8D4E8 #124680 #124680 #B8D4E8; border-style: solid; border-width: 1px; color: #FFFFFF; cursor: pointer; font-size: 12px; padding: 2px 15px; text-align: center; }
+            .btncon input{height:40px;color:#FFF; font-size:20px; margin-bottom:10px; width:156px;}
+            .btncon .tips{background:#FFF9D7;font-size:12px;  border: 1px solid #E2C822; width:148px; padding:3px; margin-bottom:10px;}
+
+            .content .btncon{ vertical-align:top}
+            .content textarea, .content .btncon, div#result{ display:inline-block; *display:inline; *zoom:1; height:430px; } 
+            .content textarea, div#result {width:400px;}
+
+            div#result{ border:1px solid #000; overflow:scroll}
+            div#result span{ color:#FFF}
+
+            div.ad1{ background:#005EAC;}
+
+            .container { margin:0 auto; width:980px;text-align:left;}
+            center{height:30px;display:block;}
+            center h1{ margin:0px;display:inline-block; *display:inline; *zoom:1; float:left;}
+            img{ border:1px solid #CCC}
+            .des,.readme{ background:#005EAC; color:#FFF;font-weight:bold; border:1px solid #000; padding:5px;}
+            .des{ text-align:center; margin:5px 0;}
+            .des a{ margin-left:20px; color:#FFF}
+            .des .show-config{ color:#0F0;}
+
+            .ad2{ text-align:center}
+        </style>
+
+    </head>
+    <body onload="init()">
+    <div class="container">
+        <center>
+           <h1>咆哮体生成器</h1>
+           <img src="http://img.hexun.com/2011-03-12/127884684.jpg " style="display:none;" />
+            <div>
+            <!--Passit BUTTON BEGIN-->
+            <script type="text/javascript">
+            bookmark_service_div="kxzt,baiduHi,bookmark,baidu,douban,sohuweibo,163weibo,qqweibo,tianysq,more";
+            bookmark_service="qqkj,sinaweibo,xnzt,qq,taojianhu,youdao,feixin,fanfou,more";
+            </script>
+            <div class="passit_barDiv"><a class="passit_default" href="http://www.passit.cn/bookmark.html" target="_blank"></a></div>
+            <!--Passit BUTTON END-->
+            </div>
+        </center> 
+
+        <div class="des"> 
+           <span>在左侧输入要转换的文字，参数想改就改吧，点击咆哮吧就行了<span>
+           <a href="http://xiaozu.renren.com/xiaozu/105106/thread" target="_blank">去人人网咆哮吧</a>
+           <a href="http://baike.baidu.com/view/4169613.htm">关于咆哮体</a>
+           <a href="javascript:;" onclick="showControl();" class="show-config">配置参数</a>
+        </div>
+
+        <div class="control" style="display:none" id="config">
+            <p> <label><span>叹号数量：</span><input type="text" value="5" id="count"  /></label>
+            <label> <input type="checkbox" id="countrandom" checked /> 感叹号数量随机 (最少为3个，如果左侧数字大于3个，最多为左侧数字，否则最多8个) </label> 
+            </p>
+            <p> <label><span>前缀：</span><input type="text" value="尼玛" id="before"  /></label> <label>出现概率（0-1）：<input type="text" value="0.3" id="bfprobability" /> </label>  </p>
+            <p> <label><span>后缀：</span><input type="text" value="！有木有！" id="after"  /></label> <label>出现概率（0-1）：<input type="text" value="0.3" id="afprobability" /> </label>  </p>
+            <p><label><span>插入单句：</span><input type="text" value="亲！！！！！！！！" id="insertline"></label> <label>出现概率（0-1）：<input type="text" value="0.3" id="lineprobability" /> </label></p>
+            <p>
+                <input type="button" class="text-input" value="咆哮吧！ →" id="convertor1" />
+            </p>
+        </div>
+
+        <div class="content">
+            <textarea id="source">
+
+太阳出来我爬山坡
+
+爬到了山顶我想唱歌
+
+歌声飘给我妹妹听啊
+
+听到我歌声她笑呵呵
+
+春天里那个百花鲜
+
+我和那妹妹啊把手牵
+
+又到了山顶我走一遍啊
+
+看到了满山的红牡鹃
+
+我嘴里头笑的是呦啊呦啊呦
+
+我心里头美的是啷个里个啷
+
+妹妹她不说话只看着我来笑啊
+
+我知道她等我的大花轿
+
+我嘴里头笑的是呦啊呦啊呦
+
+我心里头美的是啷个里个啷
+
+妹妹她不说话只看着我来笑啊
+
+我知道她我来抱一抱
+
+
+抱一抱那个抱一抱
+
+
+抱着那个月亮它笑弯了腰
+
+
+抱一抱那个抱一抱
+
+
+抱着我那妹妹呀上花轿
+            </textarea>
+            <div class="btncon">
+                <input type="button"  class="text-input" value="咆哮吧！ →" id="convertor" />
+                <div class="tips"> 1.每次点击咆哮都不一样啊！！ <br/>  2.刷新页面看教主不同靓照！！<br/>3.右上角的配置参数有大惊喜！！！<br/>  4.顶部的按钮点击可以分享给你的好友！！</div>
+                <div class="ad1">
+                    <script type="text/javascript"><!--
+                   /// google_ad_client = "ca-pub-8595749662836751";
+                   /// /* 新样式test */
+                   /// google_ad_slot = "9336631606";
+                   /// google_ad_width = 120;
+                   /// google_ad_height = 240;
+                   /// //-->
+                    </script>
+		    <!-- <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> -->
+                </div>
+                <input type="button"  class="text-input" value="复制啊！！" id="copybtn" />
+            </div>
+            <div id="result"> </div>
+        </div>
+
+        <div class="ad2">
+            <script type="text/javascript">
+            <!--
+            google_ad_client = "ca-pub-8595749662836751";
+            google_ad_slot = "1609348672";
+            google_ad_width = 728;
+            google_ad_height = 90;
+            //-->
+            </script>
+            <script type="text/javascript"
+            src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+            </script>
+        </div>
+        
+    </div>
+	<script type="text/javascript" src="libs/ZeroClipboard.js"></script>
+    <script type="text/javascript" src="http://www.passit.cn/js/passit_bar_big_new.js?pub=4209&simple=1" charset="UTF-8"></script>
+    <script type="text/javascript">
+    (function(){
+        //if( document.domain !== 'jser.me' || top.location !== window.location ) {
+        //   location.href = 'http://jser.me/demos/js/pxt.html?rnd=' + Math.random(); 
+        //}
+        var $ = function( id ) { return id?document.getElementById(id) : null };
+        var btn = $( 'convertor' ); 
+        var replaceList = [
+                    '。',
+                    '.', 
+                    '，',
+                    ',', 
+                   // '；',
+                   // ';', 
+                   // '、', 
+                   // '：',
+                   // ':', 
+                    '？',
+                    '?', 
+                    '！',
+                    '\\n',
+                    '!' ]; 
+
+        function getPb( v ){
+            var _v = v;
+            if( v > 1 ) _v = 1;
+            if( isNaN(v) || v < 0 ) _v = 0;
+
+            return _v;
+        }
+
+
+        function $random(min, max){
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        function $trim( str ) {
+            return str.replace(/^\s*|\s*$/,'');
+        }
+
+        function paoxiaoba( str, joinStr) {
+            var count = parseInt( $('count').value ),
+                bf = $('before').value,
+                af = $('after').value,
+                ln = $('insertline').value,
+                bfprobability = getPb( $('bfprobability').value ),
+                afprobability = getPb( $('afprobability').value ),
+                lnprobability = getPb( $('lineprobability').value ),
+                isRandom = $('countrandom').checked,
+                joinStr = joinStr ||  '<br/>',
+                strArry = null,
+                flag = null, 
+                rnd = null,
+                strtmp = null,
+                result = '',
+                counttmp = 0,
+                maxcount = 8,
+                mincount = 3; 
+
+            strArry = str.split(new RegExp( '[' + replaceList.join('') + ']'));
+
+            for(var i = 0, len = strArry.length; i < len; i++ ) {
+                strtmp = $trim( strArry[i] );
+
+                if( strtmp == '' ) continue;
+
+                rnd = Math.random();
+                if( rnd <= bfprobability ) {
+                    strtmp = bf + strtmp; 
+                } 
+
+                rnd = Math.random();
+                if( rnd <= afprobability ) {
+                    strtmp = strtmp + af;
+                }
+
+
+                if( isRandom ) {
+                   counttmp= $random ( mincount, count > mincount ? count : maxcount ); 
+                } else {
+                   counttmp = count;
+                } 
+
+                result += strtmp + new Array(counttmp + 1).join('！') + ( i == len ? '' : joinStr );
+
+                rnd = Math.random();
+                if( rnd <= lnprobability ) {
+                   result += ln + joinStr;  
+                }
+            }
+
+            return  result;
+        }
+
+       $('convertor1').onclick =  btn.onclick = function(){
+            $('result').innerHTML = paoxiaoba( $('source').value );// + '<span> 来自咆哮体生成器：http://jser.me/demos/js/pxt.html</span>'
+        };
+
+        var bgArry = [
+            'http://img.hexun.com/2011-03-12/127884681.jpg ',
+            'http://img.hexun.com/2011-03-12/127884684.jpg ',
+            'http://img.hexun.com/2011-03-12/127884682.jpg',
+            'http://img.hexun.com/2011-03-12/127884683.jpg'
+        ];
+        $('result').style.background = "url( "+ bgArry[ $random(0,bgArry.length - 1) ] +" ) no-repeat top center "
+
+
+        var show = false;
+        window.showControl = function(){
+            if( show ) {
+                $('config').style.display = 'none';
+                show = false;
+            } else {
+                $('config').style.display = '';
+                show = true;
+            }
+
+            window.clip.reposition();
+        }
+
+		window.clip = null, window.clip1 = null;
+		
+		function init() {
+            ZeroClipboard.setMoviePath( 'libs/ZeroClipboard.swf' );
+			clip = new ZeroClipboard.Client();
+			clip.setHandCursor( true );
+			
+			clip.addEventListener('onMouseUp', function (client) {
+				clip.setText( $('result').innerHTML.replace(/<.*?br>/ig, '\n') + '\n 来自咆哮体生成器：http://jser.me/demos/js/pxt.html\n' );
+			});
+			
+			clip.addEventListener('complete', function (client, text) {
+                alert('复制完毕！！！！！！！！\n亲！！！\n去咆哮吧！！！！！！');
+			});
+			
+			clip.glue( 'copybtn');
+		}
+
+        window.init = init;
+
+
+    })()
+    </script>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-17119635-1']);
+      _gaq.push(['_setDomainName', '.jser.me']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    </body>
+</html>

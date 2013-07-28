@@ -1,5 +1,5 @@
 ---
-layout : default 
+layout : post 
 title : 介绍js-assessment
 tags : javascript 单元测试
 ---

@@ -1,5 +1,5 @@
 ---
-layout : default 
+layout : post 
 title : 自定义github pages的域名
 tags : github 
 ---

@@ -1,5 +1,5 @@
 ---
-layout : default 
+layout : post 
 title : Virtualbox 克隆虚拟机
 tags : linux  Virtualbox
 ---

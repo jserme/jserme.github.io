@@ -1,5 +1,5 @@
 ---
-layout : default 
+layout : post 
 title : ubuntu下firefox安装java插件
 tags : firefox  javaplugin  juniper
 ---

@@ -1,5 +1,5 @@
 ---
-layout : default 
+layout : post 
 title : mac下tar压缩文件上传到ubuntu解压时出错
 tags : mac linux
 ---

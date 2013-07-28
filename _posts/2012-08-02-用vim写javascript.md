@@ -1,5 +1,5 @@
 ---
-layout : default 
+layout : post 
 title : 用vim写javascript
 tags : javascript vim
 ---

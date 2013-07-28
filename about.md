@@ -1,20 +1,23 @@
 ---
 layout: default
-title: 关于草依山 
+title: 关于 @草依山 
 ---
 
-<div class="menu about"> 
-  <h3>关于</h3>
-  <p>1988年生人，2009年毕业于天津工业大学光信专业，喜好编程。</p>
-  <p>“代码是写给人看的，做的东西必须自己同时是忠实用户。”</p>
-  <p>09年7月至12年10月，人人网高级前端工程师，负责人人网日志、相册、分享等前端工作。</p>
-  <p>12年10月至今，阿里UX资深前端工程师，负责广告投放JS引擎。</p>
-</div>
+## 关于
+* 1988年生人，2009年毕业于天津工业大学光信专业，喜好编程。
+* “代码是写给人看的，做的东西必须自己同时是忠实用户。”
+* 09年7月至12年10月，人人网高级前端工程师，负责人人网日志、相册、分享等前端工作。
+* 12年10月至今，阿里UX资深前端工程师，负责广告投放JS引擎。
+
+## 推荐的一些东西
+* [expressjs中文文档](http://expressjs.jser.us)
+* [jade中文文档](http://expressjs.jser.us/jade.html) 已经收录进官方
+* [前端导航站](http://123.jser.us/)
+* [在线markdown编辑器 Mahua](http://mahua.jser.me/)
 
 ## 你可以在下面的地方找到我
-<ul class="profile-links">
-    <li> <a href="http://ihubo.renren.com" target="_blank"><img src="/images/renren.png"></a></li>
-    <li> <a href="http://www.weibo.com/ihubo" target="_blank"><img src="/images/weibo.png"></a></li>
-    <li> <a href="http://www.zhihu.com/people/jser.me" target="_blank"><img src="/images/zhihu.png"></a></li>
-    <li> <a href="http://feed.feedsky.com/js_sru0" target="_blank"><img src="/images/rss.png"></a></li>
-</ul>
+* [人人网](http://ihubo.renren.com)
+* [微博 @草依山](http://www.weibo.com/ihubo)
+* [知乎](http://www.zhihu.com/people/jser.me)
+* [RSS订阅](http://feed.feedsky.com/js_sru0)
+* [Github](https://github.com/jserme)

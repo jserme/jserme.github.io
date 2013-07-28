@@ -231,6 +231,10 @@ table {
 .tags-con a {
     float:left;
 }
+.content li{
+    margin:5px 0;
+}
+
 .links-con {
     float:right;
     width:20%;
@@ -325,19 +329,6 @@ table {
     .pagination {
         height: 40px;
         margin: 20px 0;
-    }
-    .content-reply input {
-        width:160px;
-    }
-    .content-reply span {
-        width:60px;
-    }
-    .content-reply textarea {
-        margin-left:60px;
-        width:230px;
-    }
-    .content-reply input.button {
-        margin:0 0 12px 60px;
     }
 }
 /** 960px __________________________________________________________________________________________________________ */

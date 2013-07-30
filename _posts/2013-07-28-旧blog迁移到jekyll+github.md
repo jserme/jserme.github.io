@@ -167,6 +167,7 @@ layout : nil
 * 语法高亮支持请在`_config.yml`里设置`pygments:true`, 默认情况下它是true
 * 可能不知道某些语言高亮的时候应该表示为什么，可以在[这里](http://pygments.org/demo/)查看，比如yml的是yaml
 * 如果想输出liquid的东西，需要把它包裹在raw里
+* 标题里如果含有:，可以把整个标题用单引号或者它的html实体表示
 
 
 ##github上的设置

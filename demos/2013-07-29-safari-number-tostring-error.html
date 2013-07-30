@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>safari number tostring error</title>
+        <body>
+            <script type="text/javascript">
+                var utils = {};
+                utils.encode = function(str) {
+                    return encodeURIComponent(str.toString());
+                }
+
+                var arry = ['123', 123, 'bobo', 'hello', '889', '', 123];
+
+                for (var str = 0; str < arry.length; str++) {
+                    console.log(utils.encode((arry[str]).toString()));
+                }
+            </script>
+        </body>
+</html>

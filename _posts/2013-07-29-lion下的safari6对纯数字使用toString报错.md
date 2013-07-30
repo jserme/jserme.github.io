@@ -30,4 +30,6 @@ utils.encode = function(str) {
 }
 ```
 
+后来发现在Github上也已经有人提过[这个Bug](https://github.com/mleibman/SlickGrid/pull/472)
+
 单独提出来的代码也无法复现这个Bug，附上[测试页面](/demos/2013-07-29-safari-number-tostring-error.html), 这个只是解决问题，真正的原因还没有弄清楚，哪位小伙伴若知详情，求分解。

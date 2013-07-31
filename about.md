@@ -10,14 +10,14 @@ title: 关于 @草依山
 * 12年10月至今，阿里UX资深前端工程师，负责广告投放JS引擎。
 
 ## 推荐的一些东西
+* [本人的Vim配置](https://github.com/jserme/vim-conf)
 * [expressjs中文文档](http://expressjs.jser.us)
 * [jade中文文档](http://expressjs.jser.us/jade.html) 已经收录进官方
 * [前端导航站](http://123.jser.us/)
 * [在线markdown编辑器 Mahua](http://mahua.jser.me/)
 
 ## 你可以在下面的地方找到我
-* [人人网](http://ihubo.renren.com)
+* [Github](https://github.com/jserme)
 * [微博 @草依山](http://www.weibo.com/ihubo)
 * [知乎](http://www.zhihu.com/people/jser.me)
 * [RSS订阅](http://feed.feedsky.com/js_sru0)
-* [Github](https://github.com/jserme)

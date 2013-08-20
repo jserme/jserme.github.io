@@ -168,6 +168,7 @@ layout : nil
 * 可能不知道某些语言高亮的时候应该表示为什么，可以在[这里](http://pygments.org/demo/)查看，比如yml的是yaml
 * 如果想输出liquid的东西，需要把它包裹在raw里
 * 标题里如果含有:，可以把整个标题用单引号或者它的html实体表示
+* 如果想写草稿，创建一个_drafts目录，然后在里面写，启动的时候加个参数`jekyll serve -w --drafts`
 
 
 ##github上的设置

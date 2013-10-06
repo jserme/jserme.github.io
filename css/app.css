@@ -138,6 +138,8 @@ blockquote {
 img {
     max-width: 100%;
     border:none;
+    vertical-align:middle;
+    margin:2px;
 }
 table {
     width: 100%;

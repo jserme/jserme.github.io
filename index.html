@@ -15,6 +15,6 @@ title: 草依山的Javascript世界
    {% endunless %}
    <div class="article">
        <span class="datetime">{{ post.date | date:"%m-%d" }} </span>
-       <a href="{{ post.url }}">{{ post.title }}</a>
+       <a class="title" href="{{ post.url }}">{{ post.title }}</a>
    </div>
 {% endfor %}

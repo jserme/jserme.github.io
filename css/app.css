@@ -73,13 +73,25 @@ header .logo {
     right: 2px;
 }
 .article {
-    height:20px;
     margin:5px 0;
-    margin-left:30px;
+    margin-left:20px;
 }
 .article .datetime {
+    vertical-align:top;
     margin-right:10px;
+    display:inline-block;
 }
+
+.article .title {
+    max-width:80%;
+    display:inline-block;
+    word-break:break-all;
+}
+
+.related-post .article .title {
+    max-width:70%;
+}
+
 h1.title {
     font-size:16px;
     line-height:19px;

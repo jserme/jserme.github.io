@@ -23,4 +23,4 @@ title: 关于 @草依山
 * [RSS订阅](http://feed.feedsky.com/js_sru0)
 
 ## 欢迎到<a href="http://www.laiwang.com/">来往</a>与我交流↓↓↓↓↓
-<img width="180" height="180" src="/images/laiwang.jpg" />
+<img width="180" height="180" src="/images/laiwang.png" />

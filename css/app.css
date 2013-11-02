@@ -248,8 +248,6 @@ table {
     margin:5px 0;
 }
 .links-con {
-    float:right;
-    width:20%;
     padding:10px;
 }
 .links-con ul, .links-aboutme ul {
@@ -356,7 +354,10 @@ code {
     .links-aboutme {
         float:right;
         width:20%;
-        padding:10px;
+    }
+    .links-con {
+        float:right;
+        width:20%;
     }
 }
 /** 960px __________________________________________________________________________________________________________ */

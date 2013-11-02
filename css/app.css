@@ -237,9 +237,8 @@ table {
     margin-left:2px;
 }
 .tags-con {
-    float:left;
-    width:48%;
-    padding:10px 0 10px 20px;
+    padding:10px 0 10px 10px;
+    overflow:hidden;
 }
 .tags-con a {
     float:left;
@@ -258,12 +257,12 @@ table {
     -webkit-margin-before: 0em;
     list-style:none;
 }
+
 .links-con ul li, .links-aboutme ul li {
     margin:5px 0;
 }
+
 .links-aboutme {
-    float:right;
-    width:20%;
     padding:10px;
 }
 .meta {
@@ -347,6 +346,16 @@ code {
     .pagination {
         height: 40px;
         margin: 20px 0;
+    }
+    .tags-con {
+        float:left;
+        width:48%;
+        padding:10px 0 10px 20px;
+    }
+    .links-aboutme {
+        float:right;
+        width:20%;
+        padding:10px;
     }
 }
 /** 960px __________________________________________________________________________________________________________ */

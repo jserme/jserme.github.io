@@ -21,3 +21,6 @@ title: 关于 @草依山
 * [微博 @草依山](http://www.weibo.com/ihubo)
 * [知乎](http://www.zhihu.com/people/jser.me)
 * [RSS订阅](http://feed.feedsky.com/js_sru0)
+
+## 欢迎到<a href="http://www.laiwang.com/">来往</a>与我交流↓↓↓↓↓
+<img width="180" height="180" src="/images/laiwang.png" />

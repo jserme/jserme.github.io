@@ -50,6 +50,7 @@ header {
     padding:5px;
     border-bottom: 1px solid #B2D2E1;
     z-index:3;
+    min-height:54px;
 }
 header h1 {
     margin: 0;

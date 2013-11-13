@@ -34,6 +34,7 @@ tags :  测试 karma
 ## 问题
 
 有两个问题需要解决
+
 * karma会把html文件当作js载入，也就是它会使用一个script标签把文件载入 
 * karma对于html文件使用html-js预处理，页面中输出的是一个hello.html.js
 

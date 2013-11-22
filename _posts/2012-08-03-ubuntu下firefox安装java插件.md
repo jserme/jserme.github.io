@@ -1,7 +1,7 @@
 ---
 layout : post 
 title : ubuntu下firefox安装java插件
-tags : firefox  javaplugin  juniper
+tags : ubuntu
 ---
 
 在ubuntu下连接公司的vpn才发现我的火狐居然没有安装javaplugin

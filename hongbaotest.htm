@@ -1,0 +1,107 @@
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>情人节红包</title>
+	<style>
+		body{margin:0;background:#232323;height:100%;overflow:hidden;}
+		.msg{padding:20px;color:#ccc;font-size:18px;}
+		#canvas img{width:100%;}
+		#next1{font-size:26px;color:#fff;top:65%;text-align:center;}
+		.page{position:absolute;}
+		div.page{width:100%;top:0;background:#232323;height:150%;}
+		span.page{width:100%;}
+	</style>
+	<script type="text/javascript" charset="utf-8" src="http://mat1.gtimg.com/www/js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript">
+var dataForWeixin={
+   appId:"",
+   MsgImg:"http://img1.gtimg.com/fashion/pics/hv1/156/66/1520/98854986.png",
+   TLImg:"http://img1.gtimg.com/fashion/pics/hv1/156/66/1520/98854986.png",
+   url:"http://fashion.qq.com/product/wap/try/hongbaotest.htm",
+   title:"微信情人节红包",
+   desc:"我给你发了一个红包，赶紧去拆！ 祝：情人节快乐。",
+   fakeid:"",
+   callback:function(){}
+};
+(function(){
+   var onBridgeReady=function(){
+   WeixinJSBridge.on('menu:share:appmessage', function(argv){
+      WeixinJSBridge.invoke('sendAppMessage',{
+         "appid":dataForWeixin.appId,
+         "img_url":dataForWeixin.MsgImg,
+         "img_width":"120",
+         "img_height":"120",
+         "link":dataForWeixin.url,
+         "desc":dataForWeixin.desc,
+         "title":dataForWeixin.title
+      }, function(res){(dataForWeixin.callback)();});
+   });
+   WeixinJSBridge.on('menu:share:timeline', function(argv){
+      (dataForWeixin.callback)();
+      WeixinJSBridge.invoke('shareTimeline',{
+         "img_url":dataForWeixin.TLImg,
+         "img_width":"120",
+         "img_height":"120",
+         "link":dataForWeixin.url,
+         "desc":dataForWeixin.desc,
+         "title":dataForWeixin.title
+      }, function(res){});
+   });
+   WeixinJSBridge.on('menu:share:weibo', function(argv){
+      WeixinJSBridge.invoke('shareWeibo',{
+         "content":dataForWeixin.title,
+         "url":dataForWeixin.url
+      }, function(res){(dataForWeixin.callback)();});
+   });
+   WeixinJSBridge.on('menu:share:facebook', function(argv){
+      (dataForWeixin.callback)();
+      WeixinJSBridge.invoke('shareFB',{
+         "img_url":dataForWeixin.TLImg,
+         "img_width":"120",
+         "img_height":"120",
+         "link":dataForWeixin.url,
+         "desc":dataForWeixin.desc,
+         "title":dataForWeixin.title
+      }, function(res){});
+   });
+};
+if(document.addEventListener){
+   document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+}else if(document.attachEvent){
+   document.attachEvent('WeixinJSBridgeReady'   , onBridgeReady);
+   document.attachEvent('onWeixinJSBridgeReady' , onBridgeReady);
+}
+})();
+</script>
+</head>
+<body>
+	<div id="canvas" >
+		<div class="page" style="z-index:0;"> 
+			<div class="msg" ><img src="http://img1.gtimg.com/fashion/pics/hv1/156/66/1520/98854986.png" />我给你发了一个红包，赶紧去拆！祝：恭喜发财，马年吉祥。</div>
+		</div>
+		<div id="logo" class="page" style="z-index:100" ><br /><img src="http://img1.gtimg.com/fashion/pics/hv1/15/72/1520/98856375.jpg" /><br /><br /><br /><br /><br /><br /><br /></div>
+		<span id="next1" class="page" style="z-index:51"  ><script>
+		document.write(1500000+50*Math.random().toFixed(3));
+		</script>元</span>
+		<!--http://img1.gtimg.com/fashion/pics/hv1/14/72/1520/98856374.jpg-->
+		<div id="next" class="page" style="z-index:50"  ><img src="http://img1.gtimg.com/fashion/pics/hv1/14/72/1520/98856374.jpg" /></div>
+		<div class="page" style="z-index:10"  >
+			<div class="msg"  >亲，你上当了！o(∩_∩)o~~过年啦，娱乐一下嘛。 赶快分享到好友群。<br> 另外别忘了留言<font color="yellow" >“红包收到，谢谢土豪”</font>，让后面的小伙伴继续抢红包 
+		<br/><br/>
+				请在通讯录搜索 <font color="yellow" >mzb327</font>，给生活添点乐。<br />
+				<br /><br /><br /></div>
+		
+		
+			</div>
+	
+	</div>
+<script>
+	$("#logo").click(function(){$("#logo").hide();});
+	$("#next").click(function(){$("#next").hide();$("#next1").hide();});
+</script>
+	<script type="text/javascript" src="http://tajs.qq.com/stats?sId=30288624" charset="UTF-8"></script>
+</body>
+</html>
+<!--[if !IE]>|xGv00|5282753d03a9c03bfc5446875eaae1e7<![endif]-->

@@ -7,6 +7,8 @@ tags: grunt javascript gulp
 
 Grunt出来之后，nodejs里的构建工具宝座长久以来就是它的，随着新星Gulp的出现，Grunt的地位明显被削弱了。因为打算换换口味，决定对比一下它们。
 
+相应的代码在[这里](https://github.com/jserme/gruntvsgulp)，不想看文章的可以自己clone一下代码，然后对比一下。
+
 ## 定一下我们的任务
 
 用两个工具分别实现一些常见的任务，对比性能、代码

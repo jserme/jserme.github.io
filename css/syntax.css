@@ -5,7 +5,8 @@
     background: #222;
     color: #ffffff;
     padding: 0.2em 0.9em;
-    margin-bottom: 1em;
+    margin-bottom: 0.8em;
+    margin-top: 0.8em;
     font: normal normal normal 115%/normal'Monaco', 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace !important;
     line-height: 1.1em;
     overflow: auto;

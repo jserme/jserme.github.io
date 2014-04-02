@@ -47,8 +47,9 @@ function loadJs(src, callback){
 loadJs('/js/jquery-1.7.2.min.js', function(){
     loadJs('/js/md5.min.js', function(){
         //取到文章的路径，追加到请求地址上
-        var articlePath =location.href.match(/[^\/]\/([^\/].*?)$/)[1].replace(/\//g, '-').replace(/html$/,'md');
-        var api = 'https://api.github.com/repos/jserme/jserme.github.io/commits?path=_posts%2F';
+        //可以通过{{page.path}}来取到
+        var articlePath ='{{page.path}}'
+        var api = 'https://api.github.com/repos/jserme/jserme.github.io/commits?path='
         var tmpl = '<div class="article">\
                         <span class="datetime">{date}</span>\
                         <span>\

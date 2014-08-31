@@ -17,7 +17,7 @@ gem install mina
 
 ## 简单的配置
 
-```
+```ruby
 require 'mina/git'
 require 'mina/bundler'
 
@@ -58,7 +58,7 @@ end
 
 ## nodejs应用的发布示例
 
-```
+```ruby
 require 'mina/git'
 
 set :term_mode, nil

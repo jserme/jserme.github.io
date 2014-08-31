@@ -60,8 +60,6 @@ end
 
 ```
 require 'mina/git'
-require 'mina/scp'
-require 'mina/bundler'
 
 set :term_mode, nil
 # 这里一个虚拟机的ip

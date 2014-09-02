@@ -102,7 +102,8 @@ task :deploy do
     to :launch do
       # 重启应用
       queue "NODE_ENV=production #{forever} stopall"
-      queue "NODE_ENV=production #{forever} start -a app.js"
+      # 注意把log放到shared里去
+      queue "NODE_ENV=production #{forever} start -o #{deploy_to}/shared/log/output.log -e #{deploy_to}/shared/log/error.log -a app.js "
     end
   end
 end

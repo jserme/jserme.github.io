@@ -49,6 +49,9 @@ ImportError: No module named OpenSSL
 ```
 python setup.py install
 ```
+
 安装了`pyopenssl`后就正常了
 
 再运行就正常了，接下来还是按照正常的[教程](https://github.com/goagent/goagent/blob/wiki/InstallGuide.md)搞就行了。
+ 
+访问google等网站时，会提示证书问题，按照[这个文章里的介绍导入local目录里的证书，选择始终信任](http://blog.sina.com.cn/s/blog_46c97a9d01016xb0.html)就OK了

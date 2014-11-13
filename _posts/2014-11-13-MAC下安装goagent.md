@@ -35,4 +35,20 @@ vim  Python-2.7.8/Modules/Setup.dist
 make 
 make install
 ```
+在执行本地服务`python local/proxy.py`的时候，有可能会出现
+
+```
+Traceback (most recent call last):
+  File "proxy.py", line 84, in <module>
+    import OpenSSL
+ImportError: No module named OpenSSL
+</module>
+```
+到[这里](https://pypi.python.org/simple/pyopenssl/)下载最新的`pyopenssl`，解压后
+
+```
+python setup.py install
+```
+安装了`pyopenssl`后就正常了
+
 再运行就正常了，接下来还是按照正常的[教程](https://github.com/goagent/goagent/blob/wiki/InstallGuide.md)搞就行了。

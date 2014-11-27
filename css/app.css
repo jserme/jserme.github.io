@@ -256,6 +256,20 @@ table {
     -webkit-overflow-scrolling: touch;
 }
 
+.attachinfo {
+   padding:10px; 
+   margin-bottom:10px;
+   border:1px solid #EEE;
+   border-left-width:5px;
+   border-left-color:#F0AD4E;
+   border-radius:3px;
+   background:#FFF;
+}
+
+.attachinfo .bitch{
+   color:#C7254E;
+}
+
 /** 480px __________________________________________________________________________________________________________ */
  @media only screen and (min-width: 480px) {
     .container {

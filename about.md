@@ -14,7 +14,8 @@ title: 关于 @草依山
 * [expressjs中文文档](http://expressjs.jser.us)
 * [jade中文文档](http://expressjs.jser.us/jade.html) 已经收录进官方
 * [前端导航站](http://123.jser.us/)
-* [在线markdown编辑器 Mahua](http://mahua.jser.me/)
+* [Mahua 在线markdown编辑器](http://mahua.jser.me/)
+* [URL Hammer 在线链接解析与编辑工具](http://jser.me/url-hammer/)
 
 ## 你可以在下面的地方找到我
 * [Github](https://github.com/jserme)

@@ -98,7 +98,7 @@ loadJs('/js/jquery-1.7.2.min.js', function() {
 
 同时还需要改造一下`loadJs`函数，让它拥有缓存功能，这样就不必每次更新页面的时候重新加载资源
 
-```
+```javascript
 (function(exports) {
   var cache = {}
 
@@ -154,7 +154,7 @@ loadJs('/js/jquery-1.7.2.min.js', function() {
 ### 有js会不正常执行　
 多说的脚本好像是只初始化一次，内部可能有某些检查，没有细看它的代码，可以通过传入`callback`来解决，如上面的代码
 
-```
+```javascript
   //调用刚才写的插件
   $('body').ajaxLoadPage({
     callback: function() {

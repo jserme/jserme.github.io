@@ -118,8 +118,8 @@ loadJs('/js/jquery-1.7.2.min.js', function() {
           error: defaultJump,
           success: function(data) {
             try {
-              var body = data.match(opts.contentReg || /<body>\n([\s\S]+)<\/body>/i)[1]
-              var title = data.match(opts.titleReg || /<title>([\s\S]+)<\/title>/i)[1]
+              var body = data.match(opts.contentReg || /<body>[\s\r\n]+([\s\S]+)<\/body>/i)[1]
+              var title = data.match(opts.titleReg || /<title>([\s\S]+)<\/title>[\s\r\n]+/i)[1]
 
               $(opts.container).html(body)
               document.title = title
@@ -127,8 +127,9 @@ loadJs('/js/jquery-1.7.2.min.js', function() {
 
               opts.callback && opts.callback()
             } catch (e) {
+            console.log(e)
               //出错直接跳转
-              defaultJump()
+              //defaultJump()
             }
           }
         })

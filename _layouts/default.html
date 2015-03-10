@@ -30,6 +30,119 @@
       b){a||(a=f);if(g)return a.createDocumentFragment();for(var b=b||i(a),c=b.frag.cloneNode(),d=0,e=m(),h=e.length;d<h;d++)c.createElement(e[d]);return c}};l.html5=e;q(f)})(this,document);
   </script>
   <![endif]-->
+  <script type="text/javascript">
+(function(exports) {
+  var cache = {}
+
+  //获取脚本函数
+  function loadJs(src, callback) {
+    if (!cache[src]) {
+      cache[src] = {
+        state: 'init',
+        queue: []
+      }
+    }
+
+    if (cache[src].state == 'ready') {
+      callback()
+    } else {
+      cache[src].queue.push(callback)
+    }
+
+    var doc = document;
+    var head = doc.getElementsByTagName('head')[0];
+    var s = doc.createElement('script');
+    var re = /^(?:loaded|complete|undefined)$/;
+
+    s.onreadystatechange =
+      s.onload =
+      s.onerror = function() {
+        if (re.test(s.readyState)) {
+          cache[src].state = 'ready'
+
+          var queue = cache[src].queue
+          for (var i = queue.length - 1; i >= 0; i--) {
+            queue[i]()
+            queue.pop()
+          }
+
+          s.onload = s.onerror = s.onreadystatechange = null
+          s = null
+        }
+      }
+
+    s.src = src
+    s.async = true
+
+    head.insertBefore(s, head.firstChild)
+  }
+
+  exports.loadJs = loadJs
+})(this)
+
+loadJs('/js/jquery-1.7.2.min.js', function() {
+  (function($) {
+    //必须支持pushstate
+    var support =
+      window.history && window.history.pushState && window.history.replaceState &&
+      !navigator.userAgent.match(/((iPod|iPhone|iPad).+\bOS\s+[1-4]\D|WebApps\/.+CFNetwork)/)
+
+    $.fn.ajaxLoadPage = function(opts) {
+      var context = this
+
+      if (!support) {
+        return this
+      }
+
+      return this.on('click', opts.selector || 'a', function(event) {
+        if (!opts.container) {
+          opts.container = context
+        }
+
+        var link = event.currentTarget
+
+        if (location.protocol !== link.protocol || location.hostname !== link.hostname) {
+          return
+        }
+
+        event.preventDefault()
+
+        var url = link.href
+
+        var defaultJump = function() {
+          location.href = url
+        }
+
+        $.ajax({
+          url: url,
+          error: defaultJump,
+          success: function(data) {
+            try {
+              var body = data.match(opts.contentReg || /<body>([\s\S]+)<\/body>/i)[1]
+              var title = data.match(opts.titleReg || /<title>([\s\S]+)<\/title>/i)[1]
+
+              $(opts.container).html(body)
+              document.title = title
+              history.pushState({}, title, url)
+
+              opts.callback && opts.callback()
+            } catch (e) {
+              //出错直接跳转
+              defaultJump()
+            }
+          }
+        })
+      })
+    }
+  })(jQuery)
+
+  $('body').ajaxLoadPage({
+    callback: function() {
+      window.DUOSHUO && window.DUOSHUO.init()
+    }
+  })
+})
+  </script>
   </head>
   <body> 
     <div id="container" class="container">
@@ -71,10 +184,6 @@
         </footer>
         <div class="site-info"> Copyright © 2013. Create By <a href="/about.html">草依山,</a> <a href="https://github.com/jserme/jserme.github.io"> Fork</a> </div>
     </div>
-    <script type="text/javascript" src="http://a.tbcdn.cn/s/fdc/xwj.js"></script>
-    <script type="text/javascript">
-    window._ap_xwj && _ap_xwj.monitor("201406052667904551", {"sample_rate":1,"dead_line":1404057600000});
-    </script>
     <script type="text/javascript">
        (function() {
          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;

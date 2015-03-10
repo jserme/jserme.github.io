@@ -50,27 +50,6 @@ layout: default
 
 <!--动态载入jquery, md5, 然后渲染log-->
 <script type="text/javascript">
-    //获取脚本函数
-    function loadJs(src, callback){
-        var doc = document;
-        var head = doc.getElementsByTagName('head')[0];
-        var script = doc.createElement('script');
-        var re = /^(?:loaded|complete|undefined)$/;
-
-        script.onreadystatechange = script.onload = script.onerror = function() {
-            if (re.test(script.readyState)) {
-                callback();
-                script.onload = script.onerror = script.onreadystatechange = null;
-                script = null;
-            }
-        }
-
-        script.src = src;
-        script.async = true;
-
-        head.insertBefore(script, head.firstChild);
-    }
-
     loadJs('/js/jquery-1.7.2.min.js', function(){
         loadJs('/js/md5.min.js', function(){
             //取到文章的路径，追加到请求地址上
@@ -99,5 +78,5 @@ layout: default
 </script>
 
 <!-- Duoshuo Comment BEGIN -->
-<div id="comment" class="ds-thread" data-title="{{page.title}}" data-url="http://jser.me{{page.url}}"></div>
+<div id="comment" class="ds-thread" data-thread-key="{{page.title}}" data-title="{{page.title}}" data-url="http://jser.me{{page.url}}"></div>
 <!-- Duoshuo Comment END -->

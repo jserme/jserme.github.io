@@ -46,7 +46,6 @@ loadJs('/js/jquery-1.7.2.min.js', function() {
 
       if (isCache) {
         cache[url] && success(cache[url])
-        console.log('from cache')
       }
 
       $.ajax({
@@ -82,8 +81,8 @@ loadJs('/js/jquery-1.7.2.min.js', function() {
         return this
       }
 
-      $(window).on('popstate', function(event) {
-        var state = event.originalEvent.state
+      window.onpopstate = function(event) {
+        var state = event.state
         if (!state) {
           return
         }
@@ -92,7 +91,13 @@ loadJs('/js/jquery-1.7.2.min.js', function() {
           setContent(content, opts)
           opts.callback && opts.callback()
         }, opts.cache)
-      })
+      }
+
+      //first init, replace current state
+      history.replaceState({
+        url: location.href,
+        title: document.title
+      }, document.title)
 
       return this.on('click', opts.selector || 'a', function(event) {
         if (!opts.container) {
@@ -129,7 +134,7 @@ loadJs('/js/jquery-1.7.2.min.js', function() {
   })
 })
 ```
-上面的代码其实是第三版，[第一版的代码](https://github.com/jserme/jserme.github.io/blob/c008c54b61268835eeadb485f5cad719887f6d50/_layouts/default.html#L83)在popstate的时候直接用的是链接跳转时的回调，在浏览器前进后退的时候会有bug，[第二版的代码](https://github.com/jserme/jserme.github.io/commit/a77ed74c6dd9d98ed4ea0a5d12b37d05341e0aa2)修复了这个bug，[第三版的代码](https://github.com/jserme/jserme.github.io/commit/8bf8b06d8b4567a83cd8dd9dd9d37739258cb3e4)加了ajax的内存cache，[blog]是部署在github上，有时候会有点慢，尽量利用上一次请求的结果，至于localStorage的缓存，暂时不考虑了，这个还需要缓存的时间及更新问题，没必要搞那么复杂。
+上面的代码其实是第四版，[第一版的代码](https://github.com/jserme/jserme.github.io/blob/c008c54b61268835eeadb485f5cad719887f6d50/_layouts/default.html#L83)在popstate的时候直接用的是链接跳转时的回调，在浏览器前进后退的时候会有bug，[第二版的代码](https://github.com/jserme/jserme.github.io/commit/a77ed74c6dd9d98ed4ea0a5d12b37d05341e0aa2)修复了这个bug，[第三版的代码](https://github.com/jserme/jserme.github.io/commit/8bf8b06d8b4567a83cd8dd9dd9d37739258cb3e4)加了ajax的内存cache，[blog]是部署在github上，有时候会有点慢，尽量利用上一次请求的结果，至于localStorage的缓存，暂时不考虑了，这个还需要缓存的时间及更新问题，没必要搞那么复杂，[第四版的代码](https://github.com/jserme/jserme.github.io/commit/0d52898772ebadda125ab77cc177d81459f7fa68)第一次打开再后退没有state的bug。
 
 同时还需要改造一下`loadJs`函数，让它拥有缓存功能，这样就不必每次更新页面的时候重新加载资源
 

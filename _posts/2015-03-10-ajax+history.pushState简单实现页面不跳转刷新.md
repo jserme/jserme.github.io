@@ -21,22 +21,59 @@ tags: javascript
 
 ```javascript
 loadJs('/js/jquery-1.7.2.min.js', function() {
-  //搞成一个简单的jquery插件
   (function($) {
-  /*
-    $('selector').ajaxLoadPage(options)
-
-    options:
-      selector  : 监听点击事件的元素选择器，默认就是a
-      container : 内容插入的元素的选择器
-      contentReg: 获取内容的正则
-      titleReg  : 获取标题的正则
-      callback  : 内容替换后的回调
-  */
     //必须支持pushstate
     var support =
       window.history && window.history.pushState && window.history.replaceState &&
       !navigator.userAgent.match(/((iPod|iPhone|iPad).+\bOS\s+[1-4]\D|WebApps\/.+CFNetwork)/)
+
+    var cache = {}
+    var request = function(url, callback, isCache) {
+      var defaultJump = function() {
+        location.href = url
+      }
+
+      var success = function(data) {
+        try {
+          if (isCache) {
+            cache[url] = data
+          }
+          callback && callback(data)
+        } catch (e) {
+          defaultJump()
+        }
+      }
+
+      if (isCache) {
+        cache[url] && success(cache[url])
+        console.log('from cache')
+      }
+
+      $.ajax({
+        url: url,
+        error: defaultJump,
+        success: success
+      })
+    }
+
+    var getContent = function(data, opts) {
+      var body = data.match(opts.contentReg || /<body>[\s\r\n]+([\s\S]+)<\/body>/i)[1]
+      var title = data.match(opts.titleReg || /<title>([\s\S]+)<\/title>[\s\r\n]+/i)[1]
+
+      return {
+        body: body,
+        title: title
+      }
+    }
+
+    var setContent = function(content, opts) {
+      $(opts.container).html(content.body)
+      document.title = content.title
+    }
+
+    var pushState = function(state) {
+      history.pushState(state, state.title, state.url)
+    }
 
     $.fn.ajaxLoadPage = function(opts) {
       var context = this
@@ -44,6 +81,18 @@ loadJs('/js/jquery-1.7.2.min.js', function() {
       if (!support) {
         return this
       }
+
+      $(window).on('popstate', function(event) {
+        var state = event.originalEvent.state
+        if (!state) {
+          return
+        }
+        request(state.url, function(data) {
+          var content = getContent(data, opts)
+          setContent(content, opts)
+          opts.callback && opts.callback()
+        }, opts.cache)
+      })
 
       return this.on('click', opts.selector || 'a', function(event) {
         if (!opts.container) {
@@ -59,45 +108,30 @@ loadJs('/js/jquery-1.7.2.min.js', function() {
         event.preventDefault()
 
         var url = link.href
-
-        var defaultJump = function() {
-          location.href = url
-        }
-
-        $.ajax({
-          url: url,
-          error: defaultJump,
-          success: function(data) {
-            try {
-              var body = data.match(opts.contentReg || /<body>[\n\r\s]+([\s\S]+)<\/body>/i)[1]
-              var title = data.match(opts.titleReg || /<title>([\s\S]+)<\/title>[\n\r\s]+/i)[1]
-
-              $(opts.container).html(body)
-              document.title = title
-              history.pushState({}, title, url)
-
-              opts.callback && opts.callback()
-            } catch (e) {
-              //出错直接跳转
-              defaultJump()
-            }
-          }
-        })
+        request(url, function(data) {
+          var content = getContent(data, opts)
+          setContent(content, opts)
+          pushState({
+            url: url,
+            title: content.title
+          })
+          opts.callback && opts.callback()
+        }, opts.cache)
       })
     }
   })(jQuery)
 
-  //调用刚才写的插件
   $('body').ajaxLoadPage({
+    cache: true,
     callback: function() {
       window.DUOSHUO && window.DUOSHUO.init()
     }
   })
 })
 ```
+上面的代码其实是第三版，[第一版的代码](https://github.com/jserme/jserme.github.io/blob/c008c54b61268835eeadb485f5cad719887f6d50/_layouts/default.html#L83)在popstate的时候直接用的是链接跳转时的回调，在浏览器前进后退的时候会有bug，[第二版的代码](https://github.com/jserme/jserme.github.io/commit/a77ed74c6dd9d98ed4ea0a5d12b37d05341e0aa2)修复了这个bug，[第三版的代码](https://github.com/jserme/jserme.github.io/commit/8bf8b06d8b4567a83cd8dd9dd9d37739258cb3e4)加了ajax的内存cache，[blog]是部署在github上，有时候会有点慢，尽量利用上一次请求的结果，至于localStorage的缓存，暂时不考虑了，这个还需要缓存的时间及更新问题，没必要搞那么复杂。
 
 同时还需要改造一下`loadJs`函数，让它拥有缓存功能，这样就不必每次更新页面的时候重新加载资源
-
 ```javascript
 (function(exports) {
   var cache = {}
@@ -147,8 +181,6 @@ loadJs('/js/jquery-1.7.2.min.js', function() {
   exports.loadJs = loadJs
 })(this)
 ```
-
-
 ## 问题列表
 
 ### 有js会不正常执行　
@@ -162,6 +194,5 @@ loadJs('/js/jquery-1.7.2.min.js', function() {
     }
   })
 ```
-
 [blog]: http://jser.me
 [我]: http://weibo.com/ihubo

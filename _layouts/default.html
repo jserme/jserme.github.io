@@ -87,22 +87,31 @@ loadJs('/js/jquery-1.7.2.min.js', function() {
       window.history && window.history.pushState && window.history.replaceState &&
       !navigator.userAgent.match(/((iPod|iPhone|iPad).+\bOS\s+[1-4]\D|WebApps\/.+CFNetwork)/)
 
-    var request = function(url, callback) {
+    var cache = {}
+    var request = function(url, callback, isCache) {
       var defaultJump = function() {
         location.href = url
+      }
+
+      var success = function(data) {
+        try {
+          if (isCache) {
+            cache[url] = data
+          }
+          callback && callback(data)
+        } catch (e) {
+          defaultJump()
+        }
+      }
+
+      if (isCache) {
+        cache[url] && success(cache[url])
       }
 
       $.ajax({
         url: url,
         error: defaultJump,
-        success: function(data) {
-          try {
-            callback && callback(data)
-          } catch (e) {
-            //出错直接跳转
-            defaultJump()
-          }
-        }
+        success: success
       })
     }
 
@@ -141,7 +150,7 @@ loadJs('/js/jquery-1.7.2.min.js', function() {
           var content = getContent(data, opts)
           setContent(content, opts)
           opts.callback && opts.callback()
-        })
+        }, opts.cache)
       })
 
       return this.on('click', opts.selector || 'a', function(event) {
@@ -166,12 +175,13 @@ loadJs('/js/jquery-1.7.2.min.js', function() {
             title: content.title
           })
           opts.callback && opts.callback()
-        })
+        }, opts.cache)
       })
     }
   })(jQuery)
 
   $('body').ajaxLoadPage({
+    cache: true,
     callback: function() {
       window.DUOSHUO && window.DUOSHUO.init()
     }

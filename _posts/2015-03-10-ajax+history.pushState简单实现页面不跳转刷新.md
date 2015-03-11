@@ -75,10 +75,12 @@ loadJs('/js/jquery-1.7.2.min.js', function() {
     }
 
     $.fn.ajaxLoadPage = function(opts) {
-      var context = this
-
       if (!support) {
         return this
+      }
+
+      if (!opts.container) {
+        opts.container = this
       }
 
       window.onpopstate = function(event) {
@@ -100,10 +102,6 @@ loadJs('/js/jquery-1.7.2.min.js', function() {
       }, document.title)
 
       return this.on('click', opts.selector || 'a', function(event) {
-        if (!opts.container) {
-          opts.container = context
-        }
-
         var link = event.currentTarget
 
         if (location.protocol !== link.protocol || location.hostname !== link.hostname) {

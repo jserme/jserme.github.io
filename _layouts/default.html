@@ -141,8 +141,8 @@ loadJs('/js/jquery-1.7.2.min.js', function() {
         return this
       }
 
-      $(window).on('popstate', function(event) {
-        var state = event.originalEvent.state
+      window.onpopstate = function(event) {
+        var state = event.state
         if (!state) {
           return
         }
@@ -151,7 +151,13 @@ loadJs('/js/jquery-1.7.2.min.js', function() {
           setContent(content, opts)
           opts.callback && opts.callback()
         }, opts.cache)
-      })
+      }
+
+      //first init, replace current state
+      history.replaceState({
+        url: location.href,
+        title: document.title
+      }, document.title)
 
       return this.on('click', opts.selector || 'a', function(event) {
         if (!opts.container) {

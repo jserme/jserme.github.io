@@ -5,7 +5,7 @@ title: 阿里妈妈前端招聘
 
 ### TL;DR
 
-靠谱牛逼团队  诚意招前端，速发简历至 dev.hubo###gmail.com(把###换成@)
+靠谱牛逼团队  诚意招前端，速发简历至 [dev.hubo#gmail.com](mailto:xxx@xxx)(把#换成@)
 
 ### 部门简介
 
@@ -19,7 +19,7 @@ title: 阿里妈妈前端招聘
 * 我们的开源贡献：[http://github.com/thx/](http://github.com/thx/)
 * 阿里妈妈官网：[http://www.alimama.com/](http://www.alimama.com/)
 
-有意向的小伙伴们，请发简历至dev.hubo###gmail.com哦(把###换成@)
+有意向的小伙伴们，请发简历至[dev.hubo#gmail.com](mailto:xxx@xxx)哦(把#换成@)
 
 ### 岗位描述
 
@@ -43,3 +43,13 @@ title: 阿里妈妈前端招聘
 ### 工作地点
 
 北京杭州都可以选，看你喜欢哪里啰
+
+<script>
+window.loadJs('/js/jquery-1.7.2.min.js', function() {
+  var $links = $('a[href="mailto:xxx@xxx"]')
+  $.each($links, function(i,v){
+    $(v).attr('href' , 'mailto:' + $(v).text().trim().replace('#', '@'))
+  })
+})
+
+</script>

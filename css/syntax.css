@@ -1,9 +1,5 @@
-.highlight .hll {
-    background-color: #666
-}
 .highlight {
     background: #222;
-    color: #ffffff;
     padding: 0.2em 0.9em;
     margin-bottom: 0.8em;
     margin-top: 0.8em;
@@ -12,9 +8,8 @@
     overflow: auto;
     font-size: 1.1em;
     border: 1px solid #CCC;
-    -moz-border-radius:7px;
-    -webkit-border-radius:7px;
-    border-radius:7px;
+    border-radius:3px;
+    color: #f8f8f2
 }
 .highlight code, .highlight pre {
     font-family:"Consolas", "Courier New", "Courier", "FreeMono", monospace;
@@ -30,8 +25,6 @@
     background-color: #49483e
 }
 .highlight {
-    /*background: #272822;*/
-    color: #f8f8f2
 }
 .highlight .c {
     color: #75715e

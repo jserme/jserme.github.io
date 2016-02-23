@@ -257,6 +257,7 @@ table {
     padding:0px 0px;
 }
 .type pre {
+    background:#222;
     border: none;
     overflow: auto;
     word-break: break-all;

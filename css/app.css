@@ -245,23 +245,18 @@ table {
     text-align:center;
     padding:10px 0;
 }
-.type code {
-    background:#222;
-    color:#FFF;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
-    border-radius: 5px;
-    padding:3px 5px;
-}
 .site_video{
     width:100%;
     height:194px;
 }
 
+.type pre code {
+    background:#222;
+    color:#FFF;
+    border-radius: 3px;
+    padding:0px 0px;
+}
 .type pre {
-    background-color: transparent;
     border: none;
     overflow: auto;
     word-break: break-all;
@@ -269,8 +264,15 @@ table {
     -webkit-overflow-scrolling: touch;
 }
 
+.type code{
+    background:#222;
+    color:#FFF;
+    border-radius: 3px;
+    padding:1px 3px;
+}
+
 .attachinfo {
-   padding:10px; 
+   padding:10px;
    margin-bottom:10px;
    border:1px solid #EEE;
    border-left-width:5px;

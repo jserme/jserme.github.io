@@ -1,7 +1,7 @@
 ---
-layout : post 
+layout : post
 title : 如何在karma里载入html文件进行测试
-tags :  测试 karma 
+tags :  测试 karma
 ---
 
 因为要测试代码在iframe里的运行情况，必须载入一个html文件，然后判断该文件里的js执行情况，在karma里无法直接载入一个html文件，同时由于路径的变更，测试同样跑不过，下面是详述原因和解决办法
@@ -30,32 +30,30 @@ tags :  测试 karma
 `hello.html`里会引入`souce.js`，然后进行一些操作，`mainSpec.js`
 再对写入iframe进行检测，判断执行结果
 
-
 ## 问题
 
 有两个问题需要解决
 
-* karma会把html文件当作js载入，也就是它会使用一个script标签把文件载入 
+* karma会把html文件当作js载入，也就是它会使用一个script标签把文件载入
 * karma对于html文件使用html-js预处理，页面中输出的是一个hello.html.js
 
 在karma.conf.js里配置一下files对象解决问题1, served默认是true,也可以不加的，详细可以[官方文档](http://karma-runner.github.io/0.10/config/files.html)
 
-```
+```javascript
    files: [
-                'test/lib/**/*.js',
-                'src/source.js',
-                'test/mainSpec.js',
-                { pattern: 'test/iframes/*', included: false, served: true }
+     'test/lib/**/*.js',
+     'src/source.js',
+     'test/mainSpec.js',
+     { pattern: 'test/iframes/*', included: false, served: true }
    ]
-
 ```
 
 在karma.conf.js里覆盖掉默认的html-js预处理
 
-```
-    preprocessors: {
-        'test/iframes/*': ['']
-    }
+```javascript
+  preprocessors: {
+    'test/iframes/*': ['']
+  }
 ```
 
 
@@ -70,11 +68,11 @@ tags :  测试 karma
 
 ```javascript
 function getPath(path) {
-       if (window.__karma__) {
-           return path.replace(/\.\//, '/base/test/')
-       } else {
-           return path
-       }
+  if (window.__karma__) {
+    return path.replace(/\.\//, '/base/test/')
+  } else {
+    return path
+  }
 }
 
 //写入文件的时候

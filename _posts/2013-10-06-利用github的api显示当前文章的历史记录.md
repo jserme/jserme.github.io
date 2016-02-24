@@ -1,5 +1,5 @@
 ---
-layout : post 
+layout : post
 title : 利用github的api显示当前文章的历史记录
 tags : github
 ---
@@ -23,59 +23,58 @@ $.getJSON('https://api.github.com/repos/jserme/jserme.github.io/commits?path=_po
 返回的数据格式是一个数组，在每个文章页面加上下面一个id为history的div，然后通过下面的js渲染出对应html，展示效果见每个文章的下方
 
 ```javascript
-//获取脚本函数
-function loadJs(src, callback){
-    var doc = document;
-    var head = doc.getElementsByTagName('head')[0];
-    var script = doc.createElement('script');
-    var re = /^(?:loaded|complete|undefined)$/;
+// 获取脚本函数
+function loadJs (src, callback) {
+  var doc = document
+  var head = doc.getElementsByTagName('head')[0]
+  var script = doc.createElement('script')
+  var re = /^(?:loaded|complete|undefined)$/
 
-    script.onreadystatechange = script.onload = script.onerror = function() {
-        if (re.test(script.readyState)) {
-            callback();
-            script.onload = script.onerror = script.onreadystatechange = null;
-            script = null;
-        }
+  script.onreadystatechange = script.onload = script.onerror = function () {
+    if (re.test(script.readyState)) {
+      callback()
+      script.onload = script.onerror = script.onreadystatechange = null
+      script = null
     }
+  }
 
-    script.src = src;
-    script.async = true;
+  script.src = src
+  script.async = true
 
-    head.insertBefore(script, head.firstChild);
+  head.insertBefore(script, head.firstChild)
 }
 
-loadJs('/js/jquery-1.7.2.min.js', function(){
-    loadJs('/js/md5.min.js', function(){
-        //取到文章的路径，追加到请求地址上
-        //可以通过{{page.path}}来取到
-        var articlePath ='{{page.path}}'
-        var api = 'https://api.github.com/repos/jserme/jserme.github.io/commits?path='
-        var tmpl = '<div class="article">\
+loadJs('/js/jquery-1.7.2.min.js', function () {
+  loadJs('/js/md5.min.js', function () {
+    // 取到文章的路径，追加到请求地址上
+    // 可以通过{{page.path}}来取到
+    var articlePath = '{{page.path}}'
+    var api = 'https://api.github.com/repos/jserme/jserme.github.io/commits?path='
+    var tmpl = '<div class="article">\
                         <span class="datetime">{date}</span>\
                         <span>\
                             <image src="{src}" title="{author}">\
                             {message}\
                         </span>\
                     </div>'
-            var gravstarurl = 'https://1.gravatar.com/avatar/{md5hash}?s=16'; 
-            $.getJSON(api + articlePath,function(data){
-                if( data.length == 0 ){
-                    $('#history').html('暂无历史纪录 :)');
-                return false;
-            }
+    var gravstarurl = 'https://1.gravatar.com/avatar/{md5hash}?s=16'
+    $.getJSON(api + articlePath, function (data) {
+      if (data.length === 0) {
+        $('#history').html('暂无历史纪录 :)')
+        return false
+      }
 
-            var history = '';
-            $.each(data, function(i, v){
-                var avatar = gravstarurl.replace('{md5hash}', md5(v.commit.author.email));
-                history += tmpl.replace('{src}', avatar)
-                               .replace('{date}', v.commit.author.date.replace(/T.*Z/,''))
-                               .replace('{message}', v.commit.message);
-                });
+      var history = ''
+      $.each(data, function (i, v) {
+        var avatar = gravstarurl.replace('{md5hash}', md5(v.commit.author.email))
+        history += tmpl.replace('{src}', avatar)
+          .replace('{date}', v.commit.author.date.replace(/T.*Z/, ''))
+          .replace('{message}', v.commit.message)
+      })
 
-            $('#history').html(history);
-        })
-    });
-});
+      $('#history').html(history)
+    })
+  })
+})
 ```
 详细的文件可以查看[这里](https://github.com/jserme/jserme.github.io/blob/master/_layouts/post.html#L41)
-
